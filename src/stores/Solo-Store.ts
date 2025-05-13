@@ -1,5 +1,6 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import type { GameData, Round } from './Solo.utils'
+import { getGuid } from '@/utils'
 
 export const useSoloStore = defineStore('soloStore', {
   state: (): GameData => ({
@@ -82,14 +83,6 @@ export const useSoloStore = defineStore('soloStore', {
   },
 })
 
-function getGuid() {
-  // Generate a 10 digit unique ID
-  return 'xxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    const r = (Math.random() * 16) | 0,
-      v = c === 'x' ? r : (r % 4) + 8
-    return v.toString(16)
-  })
-}
 
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useSoloStore, import.meta.hot))

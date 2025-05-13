@@ -19,37 +19,31 @@ defineProps({
 })
 </script>
 <template>
-  <UCard class="shadow-md">
+  <UCard class="shadow-md" :ui="{
+    root: 'm-1',
+    header: 'p-2',
+    body: 'sm:p-2'
+  }">
     <template #header>
-      <div class="flex justify-between">
-        Round {{ roundNumber }}
-        <UButton
-          v-if="showDeleteButton"
-          @click="$emit('delete-round', roundNumber)"
-          size="xs"
-          variant="outline"
-          color="error"
-          class="mt-2"
-        >
-          Delete Round
-        </UButton>
+      <div class="flex justify-between items-center"> Round {{ roundNumber }} <UButton v-if="showDeleteButton"
+          @click="$emit('delete-round', roundNumber)" size="xs" variant="outline" color="error"> Delete Round </UButton>
       </div>
     </template>
     <table class="min-w-full table-auto">
-      <thead class="border-b">
+      <thead>
         <tr>
-          <th class="px-4 py-2 text-left">Player</th>
-          <th class="px-4 py-2 text-left">Dutch</th>
-          <th class="px-4 py-2 text-left">Blitz</th>
-          <th class="px-4 py-2 text-left">Total</th>
+          <th class="p-1 text-left">Player</th>
+          <th class="p-1 text-left">Dutch</th>
+          <th class="p-1 text-left">Blitz</th>
+          <th class="p-1 text-left">Total</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(player, playerName) in round" :key="playerName" class="border-b">
-          <td class="px-4 py-2">{{ playerName }}</td>
-          <td class="px-4 py-2">{{ player.dutch }}</td>
-          <td class="px-4 py-2">{{ player.blitz }}</td>
-          <td class="px-4 py-2">{{ player.total }}</td>
+        <tr v-for="(player, playerName) in round" :key="playerName">
+          <td class="p-1">{{ playerName }}</td>
+          <td class="p-1">{{ player.dutch }}</td>
+          <td class="p-1">{{ player.blitz }}</td>
+          <td class="p-1">{{ player.total }}</td>
         </tr>
       </tbody>
     </table>
