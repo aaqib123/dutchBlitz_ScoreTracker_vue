@@ -53,6 +53,18 @@ router.beforeEach(async (to, _from) => {
   if (!store.isGameStarted && to.name === 'SoloRounds') {
     return { name: 'SoloSettings' }
   }
+
+  //handle multi
+  if (!store.isGameStarted) {
+    if (to.name === 'MultiRounds') {
+      return { name: 'MultiSettings', params: { roomId: getGuid() } }
+    }
+    //if to multi/<roomid>
+    if (to.name === 'MultiSettings' && !to.params.roomId) {
+      return { name: 'MultiSettings', params: { roomId: getGuid() } }
+    }
+  }
+
 })
 
 export default router
