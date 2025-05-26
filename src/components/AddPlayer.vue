@@ -27,8 +27,10 @@ const deletePlayer = (index: string) => {
   emit('delete', index)
 }
 
-function toggleEditPlayer(index: number) {
-  const player = props.players[index]
+function toggleEditPlayer(playerId: string) {
+  const player = props.players.find((p) => p.id === playerId)
+  if (!player) return // safety check
+
   if (!editingPlayerIds.value.has(player.id)) {
     // Enable editing for this player
     editingPlayerIds.value.add(player.id)
@@ -59,7 +61,7 @@ function joinTestPlayer() {
     <div class="card flex flex-col gap-3">
       <div
         class="flex justify-between items-center gap-2"
-        v-for="(player, index) in players"
+        v-for="player in players"
         :key="player.id"
       >
         <UInput
@@ -74,7 +76,7 @@ function joinTestPlayer() {
             color="primary"
             variant="solid"
             :icon="editingPlayerIds.has(player.id) ? 'i-lucide-check' : 'i-lucide-edit'"
-            @click="toggleEditPlayer(index)"
+            @click="toggleEditPlayer(player.id)"
           />
         </template>
         <template v-if="!isSolo && !isHost && currentUserId === player.id">
@@ -84,7 +86,7 @@ function joinTestPlayer() {
             variant="solid"
             @click="toggleReady(player.id)"
           >
-            {{ player.isReady ? 'Ready' : 'Mark Ready' }}
+            {{ player.isReady ? 'Ready' : 'not Ready' }}
           </UButton>
         </template>
         <!-- Delete button only for host -->
