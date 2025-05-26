@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSoloStore } from '@/stores/Solo-Store';
 import { getGuid } from '@/utils';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';

@@ -8,16 +8,20 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AddPlayer: typeof import('./src/components/AddPlayer.vue')['default']
+    copy: typeof import('./src/components/SoloAddPlayer copy.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
     IconSupport: typeof import('./src/components/icons/IconSupport.vue')['default']
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
+    MultiAddPlayer: typeof import('./src/components/MultiAddPlayer.vue')['default']
     RoundCard: typeof import('./src/components/RoundCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScoreCard: typeof import('./src/components/ScoreCard.vue')['default']
+    SoloAddPlayer: typeof import('./src/components/SoloAddPlayer.vue')['default']
     SoloRoundInput: typeof import('./src/components/SoloRoundInput.vue')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     UAccordion: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Accordion.vue')['default']
